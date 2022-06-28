@@ -6,8 +6,11 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div class="clear">
-    <form action="index.jsp" method="POST">
-        <input type="submit" name="dailyAllowance" value="Go to main Page"/>
+    <form action="/ServletListType" method="POST">
+        <label>simple calculation:
+            <input type="text" name="name"/>
+        </label>
+        <input type="submit" name="dailyAllowance" value="Go to list of receipts"/>
     </form>
 </div>
 </body>

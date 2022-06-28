@@ -2,5 +2,5 @@
 <%
     if (request.getParameterValues("userName")[0].equals("User"))
         response.sendRedirect("user.jsp");
-    else response.sendRedirect("admin.jsp");
+    else response.sendRedirect("admin");
 %>
