@@ -16,10 +16,17 @@
 </h1>
 <br>
 Current daily allowance rate:
-<b><%= request.getAttribute("dailyAllowanceRate")%></b> $
+<b><%= request.getAttribute("dailyAllowanceRate")%>
+</b> $
 <br>
 Current car rate mileage:
-<b><%= request.getAttribute("carMileageRate") %></b> $/km
+<b><%= request.getAttribute("carMileageRate") %>
+</b> $/km
+<br>
+Current car mileage limit:
+<b><%= request.getAttribute("carMileageLimit") %>
+</b> km
+
 
 <br>
 <br>
@@ -34,31 +41,14 @@ Current car rate mileage:
                                           placeholder="Current rate:<%= request.getAttribute("carMileageRate") %>"
                                           value="<%= request.getAttribute("carMileageRate") %>">$/km
         <br>
+        Type ner car mileage limit: <input type="number" name="carMileageLimit" step="0.01"
+                                           placeholder="Current limit:<%= request.getAttribute("carMileageLimit") %>"
+                                           value="<%= request.getAttribute("carMileageLimit") %>"> km
+        <br>
+
         <input type="submit" value="Submit"/>
     </form>
 
-    <a href="carMillageRate.jsp">Set Car Millage Rate</a>
-    <br>
-
-    <form action="listOfreceiptToEdit.jsp" method="POST">
-        <input type="submit" value="Edit list of available receipt"/>
-    </form>
-    <br>
-
-    <form action="reimbursementDailyLimit.jsp" method="POST">
-        <input type="submit" value="Set reimbursement daily limit"/>
-    </form>
-    <br>
-
-    <form action="carMillageLimit.jsp" method="POST">
-        <input type="submit" value="Set car millage limit"/>
-    </form>
-    <br>
-
-    <form action="totalReimbursementLimit.jsp" method="POST">
-        <input type="submit" value="Set total reimbursement limit"/>
-    </form>
-    <br>
 
     to be continued...
 </div>

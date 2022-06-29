@@ -9,6 +9,8 @@ public class AdminReimbursementPanel {
     private static double carMileageRate = 0.3;
     private static double dailyAllowanceRate = 15;
 
+    private static int carMileageLimit = 1500;
+
     public static void setListOfReceipt(List<Receipt> listOfReceipt) {
         AdminReimbursementPanel.listOfReceipt = listOfReceipt;
     }
@@ -19,6 +21,10 @@ public class AdminReimbursementPanel {
 
     public static void setDailyAllowanceRate(double dailyAllowanceRate) {
         AdminReimbursementPanel.dailyAllowanceRate = dailyAllowanceRate;
+    }
+
+    public static void setCarMileageLimit(int carMileageLimit) {
+        AdminReimbursementPanel.carMileageLimit = carMileageLimit;
     }
 
     public static List<Receipt> getListOfReceipt() {
@@ -33,5 +39,7 @@ public class AdminReimbursementPanel {
         return dailyAllowanceRate;
     }
 
-
+    public static int getCarMileageLimit() {
+        return carMileageLimit;
+    }
 }

@@ -40,7 +40,6 @@ public class UserServlet extends HttpServlet {
 
         if (stringCarMileage != null && !stringCarMileage.equals("")) {
             int carMileage = Integer.parseInt(stringCarMileage);
-            carMileage *= AdminReimbursementPanel.getCarMileageRate();
             reimbursement.setCarMileage(carMileage);
         }
         if (dailyAllowanceStart != null && dailyAllowanceEnd != null &&
