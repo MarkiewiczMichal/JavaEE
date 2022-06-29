@@ -2,19 +2,20 @@ package com.example.javaeereimbursementapp;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Reimbursement {
     private final String name;
-    private int id = 0;
+    private static int id = 0;
     private double carMileageRate = 0.3;
     private double dailyAllowanceRate = 15;
-    private List<Receipt> listOfReceipt;
+    private List<Receipt> listOfReceipt =new ArrayList<>();
     private int numberDaysOfDailyAllowance;
     private int carMileage;
 
-    public Reimbursement(String name) {
-        this.name = name;
+    public Reimbursement() {
+        this.name = String.valueOf(id);
         id++;
     }
 
@@ -44,7 +45,7 @@ public class Reimbursement {
 
     public void setNumberDaysOfDailyAllowance(LocalDate start, LocalDate end) {
         Duration diference = Duration.between(start.atStartOfDay(), end.atStartOfDay());
-      numberDaysOfDailyAllowance=(int)(diference.toDays());
+        numberDaysOfDailyAllowance = (int) (diference.toDays());
     }
 
     public int getNumberDaysOfDailyAllowance() {
@@ -61,5 +62,14 @@ public class Reimbursement {
 
     public List<Receipt> getListOfReceipt() {
         return listOfReceipt;
+    }
+
+    public void addReceipt(Receipt receipt){
+        this.listOfReceipt.add(receipt);
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

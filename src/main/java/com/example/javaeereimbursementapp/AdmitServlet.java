@@ -8,12 +8,11 @@ import java.io.IOException;
 
 @WebServlet(name = "AdmitServlet", value = "/admin")
 public class AdmitServlet extends HttpServlet {
-    Reimbursement test = new Reimbursement("testowy");
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("carMileageRate", test.getCarMileageRate());
-        request.setAttribute("dailyAllowanceRate", test.getDailyAllowanceRate());
+        request.setAttribute("carMileageRate", AdminReimbursementPanel.getCarMileageRate());
+        request.setAttribute("dailyAllowanceRate", AdminReimbursementPanel.getDailyAllowanceRate());
         RequestDispatcher rd = request.getRequestDispatcher("/admin.jsp");
         rd.forward(request, response);
 
@@ -26,12 +25,12 @@ public class AdmitServlet extends HttpServlet {
 
         if (stringCarMileageRate != null && !stringCarMileageRate.equals("")) {
             double carMileage = Double.parseDouble(stringCarMileageRate);
-            test.setCarMileageRate(carMileage);
+            AdminReimbursementPanel.setCarMileageRate(carMileage);
         }
 
         if (stringDailyAllowanceRate != null && !stringDailyAllowanceRate.equals("")) {
             double dailyAllowanceRate = Double.parseDouble(stringDailyAllowanceRate);
-            test.setDailyAllowanceRate(dailyAllowanceRate);
+            AdminReimbursementPanel.setDailyAllowanceRate(dailyAllowanceRate);
         }
 
         response.sendRedirect("/admin");

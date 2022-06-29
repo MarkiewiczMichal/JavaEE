@@ -19,4 +19,9 @@ public class Receipt {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

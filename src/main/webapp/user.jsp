@@ -1,3 +1,4 @@
+<%@ page import="com.example.javaeereimbursementapp.Reimbursement" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,7 +8,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div class="clear">
-    <form action="hello" method="POST" name="form">
+    <form action="user" method="POST" name="form">
         <label>Reimbursement name:
             <input type="text" name="name"/>
         </label>
@@ -15,6 +16,15 @@
         <label>
             <input type="checkbox" name="receipts"> have you receipts to refund
         </label>
+
+
+        <label>Wybierz z listy:</label>
+        <select>
+            <option value="1" selected><%= request.getAttribute("listOfReceipts") %></option>
+            <option value="2">Wartość 2</option>
+            <option value="3">Wartość 3</option>
+        </select>
+
         <br>
         <label>
             <input  type="checkbox" id="box" name="carMileageBox" onclick="functionChangeVisible()"> have you car mileage to refund
@@ -26,7 +36,7 @@
 
         <br>
         <label>
-            <input  type="checkbox" id="box2" name="carMileageBox" onclick="functionChangeVisible2()"> test
+            <input  type="checkbox" id="box2" name="dailyallowance" onclick="functionChangeVisible2()"> test
         </label>
         <br>
 
@@ -43,6 +53,11 @@
 </div>
 
 Work in progress
+
+
+
+
+
 
 
 <script>

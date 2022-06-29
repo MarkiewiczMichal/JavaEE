@@ -25,12 +25,12 @@ Current car rate mileage:
 <br>
 <div>
     <form action="admin" method="POST">
-        Type new daily allowance rate: <input type="number" name="dailyAllowanceRate"
+        Type new daily allowance rate: <input type="number" name="dailyAllowanceRate" step="0.01"
                                               placeholder="Current rate:<%= request.getAttribute("dailyAllowanceRate")%>"
                                               value="<%= request.getAttribute("dailyAllowanceRate")%>">$
 
         <br>
-        Type new car rate mileage: <input type="number" name="carMileageRate"
+        Type new car rate mileage: <input type="number" name="carMileageRate" step="0.01"
                                           placeholder="Current rate:<%= request.getAttribute("carMileageRate") %>"
                                           value="<%= request.getAttribute("carMileageRate") %>">$/km
         <br>
