@@ -1,5 +1,7 @@
-package com.example.javaeereimbursementapp;
+package com.example.javaeereimbursementapp.servlets;
 
+import com.example.javaeereimbursementapp.Reimbursement;
+import com.example.javaeereimbursementapp.ReturnCounter;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -25,6 +27,7 @@ public class SummaryServlet extends HttpServlet {
         request.setAttribute("carMileage", reimbursement.getCarMileage());
         request.setAttribute("carMileageReturnAmount",returnCounter.getCarMileageReturnAmount());
         request.setAttribute("dailyAllowanceReturnAmount",returnCounter.getDailyAllowanceReturnAmount());
+        request.setAttribute("listOfReceipt",reimbursement.getListOfReceipt());
         RequestDispatcher rd = request.getRequestDispatcher("/summary.jsp");
         rd.forward(request, response);
     }

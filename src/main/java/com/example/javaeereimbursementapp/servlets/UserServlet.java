@@ -1,5 +1,8 @@
-package com.example.javaeereimbursementapp;
+package com.example.javaeereimbursementapp.servlets;
 
+import com.example.javaeereimbursementapp.AdminReimbursementPanel;
+import com.example.javaeereimbursementapp.Receipt;
+import com.example.javaeereimbursementapp.Reimbursement;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -15,10 +18,29 @@ public class UserServlet extends HttpServlet {
 
     public static List<Reimbursement> reimbursementsList = new ArrayList<>();
 
+    public void init() {
+        Receipt receiptTaxi = new Receipt("taxi");
+        Receipt receiptRestaurant = new Receipt("restaurant");
+        Receipt receiptHotel = new Receipt("hotel");
+        Receipt receiptAuto = new Receipt("auto");
+        Receipt receiptTrain = new Receipt("train");
+        List<Receipt> receiptList = new ArrayList<>();
+        receiptList.add(receiptTaxi);
+        receiptList.add(receiptHotel);
+        receiptList.add(receiptRestaurant);
+        receiptList.add(receiptAuto);
+        receiptList.add(receiptTrain);
+
+        AdminReimbursementPanel.setListOfReceipt(receiptList);
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setAttribute("listOfReceipts", AdminReimbursementPanel.getListOfReceipt());
+        request.setAttribute("listOfReceipt", AdminReimbursementPanel.getListOfReceipt());
+        request.setAttribute("firstFromList", AdminReimbursementPanel.getListOfReceipt().get(0));
+        request.setAttribute("secondFromList", AdminReimbursementPanel.getListOfReceipt().get(1));
+        request.setAttribute("thirdFromList", AdminReimbursementPanel.getListOfReceipt().get(2));
         RequestDispatcher rd = request.getRequestDispatcher("/user.jsp");
         rd.forward(request, response);
     }
@@ -32,10 +54,16 @@ public class UserServlet extends HttpServlet {
         String dailyAllowanceStart = request.getParameter("dailyAllowanceStart");
         String dailyAllowanceEnd = request.getParameter("dailyAllowanceEnd");
 
-        Reimbursement reimbursement = new Reimbursement();
-        Receipt receipt = new Receipt(nameReimbursement);
+        String stringSelect = request.getParameter("select");
+        String stringSelect2 = request.getParameter("select2");
 
+        Reimbursement reimbursement = new Reimbursement();
+        Receipt receipt = new Receipt(stringSelect);
+        Receipt receipt2 = new Receipt(stringSelect2);
+//        Receipt receipt = new Receipt(nameReimbursement);
+//
         reimbursement.addReceipt(receipt);
+        reimbursement.addReceipt(receipt2);
 
 
         if (stringCarMileage != null && !stringCarMileage.equals("")) {

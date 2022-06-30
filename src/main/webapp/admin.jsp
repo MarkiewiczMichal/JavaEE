@@ -1,3 +1,5 @@
+<%@ page import="com.example.javaeereimbursementapp.Receipt" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,6 +28,11 @@ Current car rate mileage:
 Current car mileage limit:
 <b><%= request.getAttribute("carMileageLimit") %>
 </b> km
+<br>
+Current possible type of receipt:
+<b><%= request.getAttribute("listOfReceipt") %>
+</b>
+<br>
 
 
 <br>
@@ -39,12 +46,31 @@ Current car mileage limit:
         <br>
         Type new car rate mileage: <input type="number" name="carMileageRate" step="0.01"
                                           placeholder="Current rate:<%= request.getAttribute("carMileageRate") %>"
-                                          value="<%= request.getAttribute("carMileageRate") %>">$/km
+    <%--                                          value="<%= request.getAttribute("carMileageRate") %>">$/km--%>>$/km
         <br>
-        Type ner car mileage limit: <input type="number" name="carMileageLimit" step="0.01"
+        Type new car mileage limit: <input type="number" name="carMileageLimit" step="1"
                                            placeholder="Current limit:<%= request.getAttribute("carMileageLimit") %>"
-                                           value="<%= request.getAttribute("carMileageLimit") %>"> km
-        <br>
+    <%--                                           value="<%= request.getAttribute("carMileageLimit") %>"> km--%>>
+        <br><br>
+        Set new possible receipt type:
+        <% List<Receipt> listOfReceipt = (List<Receipt>) request.getAttribute("listOfReceipt");%>
+        <div>
+            First: <input type="text" name="firstFromList"
+                          value="<%= listOfReceipt.get(0).getName() %>">
+
+            <br>
+            Second: <input type="text" name="secondFromList"
+                           value="<%= listOfReceipt.get(1).getName() %>">
+            <br>
+            Third <input type="text" name="thirdFromList"
+                         value="<%= listOfReceipt.get(2).getName() %>">
+            <br>
+            Fourth <input type="text" name="fourthFromList"
+                         value="<%= listOfReceipt.get(3).getName() %>">
+            <br>
+            Fifth <input type="text" name="fifthFromList"
+                          value="<%= listOfReceipt.get(4).getName() %>">
+        </div>
 
         <input type="submit" value="Submit"/>
     </form>
