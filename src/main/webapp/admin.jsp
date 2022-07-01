@@ -1,5 +1,6 @@
 <%@ page import="com.example.javaeereimbursementapp.Receipt" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,6 +34,10 @@ Current possible type of receipt:
 <b><%= request.getAttribute("listOfReceipt") %>
 </b>
 <br>
+Current limit per this type of receipt:
+<b><%= request.getAttribute("limitPerReceiptType") %>
+</b>
+<br>
 
 
 <br>
@@ -48,28 +53,44 @@ Current possible type of receipt:
                                           placeholder="Current rate:<%= request.getAttribute("carMileageRate") %>"
     <%--                                          value="<%= request.getAttribute("carMileageRate") %>">$/km--%>>$/km
         <br>
-        Type new car mileage limit: <input type="number" name="carMileageLimit" step="1"
+        Type new car mileage limit: <input type="number" name="carMileageLimit" step="1" min="0"
                                            placeholder="Current limit:<%= request.getAttribute("carMileageLimit") %>"
     <%--                                           value="<%= request.getAttribute("carMileageLimit") %>"> km--%>>
         <br><br>
         Set new possible receipt type:
-        <% List<Receipt> listOfReceipt = (List<Receipt>) request.getAttribute("listOfReceipt");%>
+        <% List<Receipt> listOfReceipt = (List<Receipt>) request.getAttribute("listOfReceipt");
+            Map<Receipt, Double> limitPerReceiptType = (Map<Receipt, Double>) request.getAttribute("limitPerReceiptType");
+            Receipt receipt0 = (Receipt) request.getAttribute("onMap0");
+            Receipt receipt1 = (Receipt) request.getAttribute("onMap1");
+            Receipt receipt2 = (Receipt) request.getAttribute("onMap2");
+            Receipt receipt3 = (Receipt) request.getAttribute("onMap3");
+            Receipt receipt4 = (Receipt) request.getAttribute("onMap4");
+        %>
         <div>
             First: <input type="text" name="firstFromList"
-                          value="<%= listOfReceipt.get(0).getName() %>">
-
+                          value="<%= listOfReceipt.get(0).getName() %>"> Current limit per this type of receipt:
+            <input type="number" name="firstFromListValue" placeholder="<%= limitPerReceiptType.get(receipt0) %>"
+            value="<%= limitPerReceiptType.get(receipt0) %>">
             <br>
             Second: <input type="text" name="secondFromList"
-                           value="<%= listOfReceipt.get(1).getName() %>">
+                           value="<%= listOfReceipt.get(1).getName() %>"> Current limit per this type of receipt:
+            <input type="number" name="secondFromListValue" placeholder="<%= limitPerReceiptType.get(receipt1) %>"
+            value="<%= limitPerReceiptType.get(receipt1) %>">
             <br>
             Third <input type="text" name="thirdFromList"
-                         value="<%= listOfReceipt.get(2).getName() %>">
+                         value="<%= listOfReceipt.get(2).getName() %>"> Current limit per this type of receipt:
+            <input type="number" name="thirdFromListValue" placeholder="<%= limitPerReceiptType.get(receipt2) %>"
+            value="<%= limitPerReceiptType.get(receipt2) %>">
             <br>
             Fourth <input type="text" name="fourthFromList"
-                         value="<%= listOfReceipt.get(3).getName() %>">
+                          value="<%= listOfReceipt.get(3).getName() %>"> Current limit per this type of receipt:
+            <input type="number" name="fourthFromListValue" placeholder="<%= limitPerReceiptType.get(receipt3) %>"
+            value="<%= limitPerReceiptType.get(receipt3) %>">
             <br>
             Fifth <input type="text" name="fifthFromList"
-                          value="<%= listOfReceipt.get(4).getName() %>">
+                         value="<%= listOfReceipt.get(4).getName() %>"> Current limit per this type of receipt:
+            <input type="number" name="fifthFromListValue" placeholder="<%= limitPerReceiptType.get(receipt4) %>"
+            value="<%= limitPerReceiptType.get(receipt4) %>">
         </div>
 
         <input type="submit" value="Submit"/>

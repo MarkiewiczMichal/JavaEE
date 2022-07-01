@@ -8,7 +8,9 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "AdmitServlet", value = "/admin")
 public class AdmitServlet extends HttpServlet {
@@ -19,6 +21,13 @@ public class AdmitServlet extends HttpServlet {
         request.setAttribute("dailyAllowanceRate", AdminReimbursementPanel.getDailyAllowanceRate());
         request.setAttribute("carMileageLimit", AdminReimbursementPanel.getCarMileageLimit());
         request.setAttribute("listOfReceipt", AdminReimbursementPanel.getListOfReceipt());
+        request.setAttribute("limitPerReceiptType", AdminReimbursementPanel.getLimitPerReceiptType());
+
+        request.setAttribute("onMap0", AdminReimbursementPanel.getListOfReceipt().get(0));
+        request.setAttribute("onMap1", AdminReimbursementPanel.getListOfReceipt().get(1));
+        request.setAttribute("onMap2", AdminReimbursementPanel.getListOfReceipt().get(2));
+        request.setAttribute("onMap3", AdminReimbursementPanel.getListOfReceipt().get(3));
+        request.setAttribute("onMap4", AdminReimbursementPanel.getListOfReceipt().get(4));
         RequestDispatcher rd = request.getRequestDispatcher("/admin.jsp");
         rd.forward(request, response);
 
@@ -34,6 +43,12 @@ public class AdmitServlet extends HttpServlet {
         String stringThirdFromList = request.getParameter("thirdFromList");
         String stringFourthFromList = request.getParameter("fourthFromList");
         String stringFifthFromList = request.getParameter("fifthFromList");
+
+        String string1FromListValue = request.getParameter("firstFromListValue");
+        String string2FromListValue = request.getParameter("secondFromListValue");
+        String string3FromListValue = request.getParameter("thirdFromListValue");
+        String string4FromListValue = request.getParameter("fourthFromListValue");
+        String string5FromListValue = request.getParameter("fifthFromListValue");
 
         if (stringCarMileageRate != null && !stringCarMileageRate.equals("")) {
             double carMileage = Double.parseDouble(stringCarMileageRate);
@@ -56,6 +71,8 @@ public class AdmitServlet extends HttpServlet {
                 && stringFourthFromList != null && !stringFourthFromList.equals("")
                 && stringFifthFromList != null && !stringFifthFromList.equals("")) {
             List<Receipt> receiptList = new ArrayList<>();
+            Map<Receipt, Double> limitPerReceiptType = new HashMap<>();
+
             Receipt firstReceipt = new Receipt(stringFirstFromList);
             Receipt secondReceipt = new Receipt(stringSecondFromList);
             Receipt thirdReceipt = new Receipt(stringThirdFromList);
@@ -66,7 +83,32 @@ public class AdmitServlet extends HttpServlet {
             receiptList.add(thirdReceipt);
             receiptList.add(fourthReceipt);
             receiptList.add(fifthReceipt);
+
+            if (string1FromListValue != null && !string1FromListValue.equals("")) {
+                double firstFromListValue = Double.parseDouble(string1FromListValue);
+                limitPerReceiptType.put(firstReceipt, firstFromListValue);
+            }
+            if (string2FromListValue != null && !string2FromListValue.equals("")) {
+                double secondFromListValue = Double.parseDouble(string2FromListValue);
+                limitPerReceiptType.put(secondReceipt, secondFromListValue);
+            }
+            if (string3FromListValue != null && !string3FromListValue.equals("")) {
+                double thirdFromListValue = Double.parseDouble(string3FromListValue);
+                limitPerReceiptType.put(thirdReceipt, thirdFromListValue);
+            }
+            if (string4FromListValue != null && !string4FromListValue.equals("")) {
+                double fourthFromListValue = Double.parseDouble(string4FromListValue);
+                limitPerReceiptType.put(fourthReceipt, fourthFromListValue);
+            }
+            if (string5FromListValue != null && !string5FromListValue.equals("")) {
+                double fifthFromListValue = Double.parseDouble(string5FromListValue);
+                limitPerReceiptType.put(fifthReceipt, fifthFromListValue);
+            }
+
+
             AdminReimbursementPanel.setListOfReceipt(receiptList);
+            AdminReimbursementPanel.setLimitPerReceiptType(limitPerReceiptType);
+
 
         }
 

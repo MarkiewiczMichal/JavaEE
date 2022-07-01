@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
@@ -31,7 +33,15 @@ public class UserServlet extends HttpServlet {
         receiptList.add(receiptAuto);
         receiptList.add(receiptTrain);
 
+        Map<Receipt,Double> limitPerReceiptType = new HashMap<>();
+        limitPerReceiptType.put(receiptTaxi,150.0);
+        limitPerReceiptType.put(receiptHotel,150.0);
+        limitPerReceiptType.put(receiptRestaurant,150.0);
+        limitPerReceiptType.put(receiptAuto,150.0);
+        limitPerReceiptType.put(receiptTrain,150.0);
+
         AdminReimbursementPanel.setListOfReceipt(receiptList);
+        AdminReimbursementPanel.setLimitPerReceiptType(limitPerReceiptType);
     }
 
     @Override
@@ -56,15 +66,31 @@ public class UserServlet extends HttpServlet {
 
         String stringSelect = request.getParameter("select");
         String stringSelect2 = request.getParameter("select2");
+        String stringSelect3 = request.getParameter("select3");
+        String stringSelect4 = request.getParameter("select4");
+        String stringSelect5 = request.getParameter("select5");
+
+        String stringSelect1Amount =request.getParameter("select1Amount");
+        String stringSelect2Amount =request.getParameter("select2Amount");
+        String stringSelect3Amount =request.getParameter("select3Amount");
+        String stringSelect4Amount =request.getParameter("select4Amount");
+        String stringSelect5Amount =request.getParameter("select5Amount");
 
         Reimbursement reimbursement = new Reimbursement();
-        Receipt receipt = new Receipt(stringSelect);
-        Receipt receipt2 = new Receipt(stringSelect2);
-//        Receipt receipt = new Receipt(nameReimbursement);
-//
-        reimbursement.addReceipt(receipt);
-        reimbursement.addReceipt(receipt2);
 
+//        if (stringSelect != null && !stringSelect.equals("")) {
+//            Receipt receipt = new Receipt(stringSelect);
+//            reimbursement.addReceipt(receipt);
+//            if (stringSelect1Amount != null && !stringSelect1Amount .equals("")) {
+//                receipt.setAmount(Double.parseDouble(stringSelect1Amount));
+//            }
+//        }
+
+        changeSelectToObject(stringSelect, stringSelect1Amount, reimbursement);
+        changeSelectToObject(stringSelect2, stringSelect2Amount, reimbursement);
+        changeSelectToObject(stringSelect3, stringSelect3Amount, reimbursement);
+        changeSelectToObject(stringSelect4, stringSelect4Amount, reimbursement);
+        changeSelectToObject(stringSelect5, stringSelect5Amount, reimbursement);
 
         if (stringCarMileage != null && !stringCarMileage.equals("")) {
             int carMileage = Integer.parseInt(stringCarMileage);
@@ -81,4 +107,15 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("result", reimbursementsList);
         response.sendRedirect("summary?result=" + (reimbursementsList.size() - 1));
     }
+
+    private void changeSelectToObject(String stringSelect, String stringSelect1Amount, Reimbursement reimbursement) {
+        if (stringSelect != null && !stringSelect.equals("")) {
+            Receipt receipt = new Receipt(stringSelect);
+            reimbursement.addReceipt(receipt);
+            if (stringSelect1Amount != null && !stringSelect1Amount .equals("")) {
+                receipt.setAmount(Double.parseDouble(stringSelect1Amount));
+            }
+        }
+    }
 }
+

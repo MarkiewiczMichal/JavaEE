@@ -24,6 +24,9 @@
         <br>
         <label class="select1" style="visibility: hidden">Wybierz z listy:</label>
         <select name="select" class="select1" style="visibility: hidden">
+            <option selected value>
+                -- select an option --
+            </option>
             <option name="option1" value="<%= listOfReceipt.get(0) %>"><%= listOfReceipt.get(0) %>
             </option>
             <option name="option2" value="<%= listOfReceipt.get(1) %>"><%= listOfReceipt.get(1) %>
@@ -35,13 +38,21 @@
             <option name="option5" value="<%= listOfReceipt.get(4) %>"><%= listOfReceipt.get(4) %>
             </option>
         </select>
-        <input type="number" class="select1" name="option1Amount" placeholder="Enter the value of the bill"
-               style="visibility: hidden" >
-        <input type="checkbox" name="receipts" class="select1" id="secondBox"
-               onclick="functionChangeVisibleSelectSecond()" style="visibility: hidden">
+        <input type="number" class="select1" name="select1Amount" placeholder="Enter the value of the bill"
+               style="visibility: hidden">
+        <label class="select1" style="visibility: hidden; font-style: italic;">
+            <input type="checkbox" class="select1" id="secondBox"
+                   onclick="functionChangeVisibleSelectSecond()" style="visibility: hidden">
+            Add more
+        </label>
+
+
         <br>
         <label class="select2" style="visibility: hidden">Wybierz z listy:</label>
         <select name="select2" class="select2" style="visibility: hidden">
+            <option selected value>
+                -- select an option --
+            </option>
             <option name="option1" value="<%= listOfReceipt.get(0) %>"><%= listOfReceipt.get(0) %>
             </option>
             <option name="option2" value="<%= listOfReceipt.get(1) %>"><%= listOfReceipt.get(1) %>
@@ -53,14 +64,88 @@
             <option name="option5" value="<%= listOfReceipt.get(4) %>"><%= listOfReceipt.get(4) %>
             </option>
         </select>
-        <input type="number" class="select2" name="option1Amount" placeholder="Enter the value of the bill"
+        <input type="number" class="select2" name="select2Amount" placeholder="Enter the value of the bill"
                style="visibility: hidden">
-        <input type="button" class="select2" value="Add next" style="visibility: hidden" onclick="">
+        <label class="select2" style="visibility: hidden; font-style: italic;">
+            <input type="checkbox" class="select2" id="thirdBox"
+                   onclick="functionChangeVisibleSelectThird()" style="visibility: hidden">
+            Add more
+        </label>
+
+
         <br>
+        <label class="select3" style="visibility: hidden">Wybierz z listy:</label>
+        <select name="select3" class="select3" style="visibility: hidden">
+            <option selected value>
+                -- select an option --
+            </option>
+            <option name="option1" value="<%= listOfReceipt.get(0) %>"><%= listOfReceipt.get(0) %>
+            </option>
+            <option name="option2" value="<%= listOfReceipt.get(1) %>"><%= listOfReceipt.get(1) %>
+            </option>
+            <option name="option3" value="<%= listOfReceipt.get(2) %>"><%= listOfReceipt.get(2) %>
+            </option>
+            <option name="option4" value="<%= listOfReceipt.get(3) %>"><%= listOfReceipt.get(3) %>
+            </option>
+            <option name="option5" value="<%= listOfReceipt.get(4) %>"><%= listOfReceipt.get(4) %>
+            </option>
+        </select>
+        <input type="number" class="select3" name="select3Amount" placeholder="Enter the value of the bill"
+               style="visibility: hidden">
+        <label class="select3" style="visibility: hidden; font-style: italic;">
+            <input type="checkbox" class="select3" id="fourthBox"
+                   onclick="functionChangeVisibleSelectFourth()" style="visibility: hidden">
+            Add more
+        </label>
 
+        <br>
+        <label class="select4" style="visibility: hidden">Wybierz z listy:</label>
+        <select name="select4" class="select4" style="visibility: hidden">
+            <option selected value>
+                -- select an option --
+            </option>
+            <option name="option1" value="<%= listOfReceipt.get(0) %>"><%= listOfReceipt.get(0) %>
+            </option>
+            <option name="option2" value="<%= listOfReceipt.get(1) %>"><%= listOfReceipt.get(1) %>
+            </option>
+            <option name="option3" value="<%= listOfReceipt.get(2) %>"><%= listOfReceipt.get(2) %>
+            </option>
+            <option name="option4" value="<%= listOfReceipt.get(3) %>"><%= listOfReceipt.get(3) %>
+            </option>
+            <option name="option5" value="<%= listOfReceipt.get(4) %>"><%= listOfReceipt.get(4) %>
+            </option>
+        </select>
+        <input type="number" class="select4" name="select4Amount" placeholder="Enter the value of the bill"
+               style="visibility: hidden">
+        <label class="select4" style="visibility: hidden; font-style: italic;">
+            <input type="checkbox" class="select4" id="fifthBox"
+                   onclick="functionChangeVisibleSelectFifth()" style="visibility: hidden">
+            Add more
+        </label>
 
+        <br>
+        <label class="select5" style="visibility: hidden">Wybierz z listy:</label>
+        <select name="select5" class="select5" style="visibility: hidden">
+            <option selected value>
+                -- select an option --
+            </option>
+            <option name="option1" value="<%= listOfReceipt.get(0) %>"><%= listOfReceipt.get(0) %>
+            </option>
+            <option name="option2" value="<%= listOfReceipt.get(1) %>"><%= listOfReceipt.get(1) %>
+            </option>
+            <option name="option3" value="<%= listOfReceipt.get(2) %>"><%= listOfReceipt.get(2) %>
+            </option>
+            <option name="option4" value="<%= listOfReceipt.get(3) %>"><%= listOfReceipt.get(3) %>
+            </option>
+            <option name="option5" value="<%= listOfReceipt.get(4) %>"><%= listOfReceipt.get(4) %>
+            </option>
+        </select>
+        <input type="number" class="select5" name="select5Amount" placeholder="Enter the value of the bill"
+               style="visibility: hidden">
+
+        <br>
         <label>
-            <input type="checkbox" id="box" name="carMileageBox" onclick="functionChangeVisible()">
+            <input type="checkbox" id="box" name="carMileageBox" onclick="functionChangeVisibleCarMileage()">
             have you car mileage to refund
         </label>
 
@@ -70,7 +155,7 @@
 
         <br>
         <label>
-            <input type="checkbox" id="box2" name="dailyallowance" onclick="functionChangeVisible2()"> test
+            <input type="checkbox" id="box2" name="dailyallowance" onclick="functionChangeVisibleDailyAllowance()"> test
         </label>
         <br>
 
@@ -91,7 +176,7 @@ Work in progress
 
 <script>
 
-    function functionChangeVisible() {
+    function functionChangeVisibleCarMileage() {
         const checkbox = document.getElementById("box");
         const label = document.getElementById("label");
 
@@ -106,7 +191,7 @@ Work in progress
         });
     }
 
-    function functionChangeVisible2() {
+    function functionChangeVisibleDailyAllowance() {
         const checkbox = document.getElementById("box2");
         const label = document.getElementById("label2");
 
@@ -137,30 +222,47 @@ Work in progress
     }
 
     function functionChangeVisibleSelectSecond() {
+        document.getElementById('secondBox').addEventListener('change', () => {
+            if (document.getElementById('secondBox').checked || document.getElementById('thirdBox').checked
+                || document.getElementById('fourthBox').checked || document.getElementById('fifthBox').checked) {
+                for (let el of document.querySelectorAll('.select2')) el.style.visibility = 'visible';
+                document.getElementById("boxOfSelect").disabled = true;
+            } else {
+                for (let el of document.querySelectorAll('.select2')) el.style.visibility = 'hidden';
+                document.getElementById("boxOfSelect").disabled = false;
+            }
+        })
+    }
 
-        // document.getElementById('secondBox').onclick = function () {
-        //     var disabled = document.getElementById("boxOfSelect").disabled;
-        //     if (disabled) {
-        //
-        //         document.getElementById("boxOfSelect").disabled = false;
-        //
-        //     } else {
-        //         document.getElementById("boxOfSelect").disabled = true;
-        //
-        //     }
+    function functionChangeVisibleSelectThird() {
+        document.getElementById('thirdBox').addEventListener('change', () => {
+            if (document.getElementById('thirdBox').checked || document.getElementById('fourthBox').checked
+                || document.getElementById('fifthBox').checked) {
+                for (let el of document.querySelectorAll('.select3')) el.style.visibility = 'visible';
+            } else {
+                for (let el of document.querySelectorAll('.select3')) el.style.visibility = 'hidden';
+            }
+        })
+    }
 
+    function functionChangeVisibleSelectFourth() {
+        document.getElementById('fourthBox').addEventListener('change', () => {
+            if (document.getElementById('fourthBox').checked || document.getElementById('fifthBox').checked) {
+                for (let el of document.querySelectorAll('.select4')) el.style.visibility = 'visible';
+            } else {
+                for (let el of document.querySelectorAll('.select4')) el.style.visibility = 'hidden';
+            }
+        })
+    }
 
-            document.getElementById('secondBox').addEventListener('change', () => {
-                if (document.getElementById('secondBox').checked) {
-                    for (let el of document.querySelectorAll('.select2')) el.style.visibility = 'visible';
-                    document.getElementById("boxOfSelect").disabled = true;
-                } else {
-                    for (let el of document.querySelectorAll('.select2')) el.style.visibility = 'hidden';
-
-                    document.getElementById("boxOfSelect").disabled = false;
-                }
-            })
-        // }
+    function functionChangeVisibleSelectFifth() {
+        document.getElementById('fifthBox').addEventListener('change', () => {
+            if (document.getElementById('fifthBox').checked) {
+                for (let el of document.querySelectorAll('.select5')) el.style.visibility = 'visible';
+            } else {
+                for (let el of document.querySelectorAll('.select5')) el.style.visibility = 'hidden';
+            }
+        })
     }
 
 </script>
