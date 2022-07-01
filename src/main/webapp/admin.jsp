@@ -70,27 +70,27 @@ Current limit per this type of receipt:
             First: <input type="text" name="firstFromList"
                           value="<%= listOfReceipt.get(0).getName() %>"> Current limit per this type of receipt:
             <input type="number" name="firstFromListValue" placeholder="<%= limitPerReceiptType.get(receipt0) %>"
-            value="<%= limitPerReceiptType.get(receipt0) %>">
+            value="<%= limitPerReceiptType.get(receipt0) %>" min="0">$
             <br>
             Second: <input type="text" name="secondFromList"
                            value="<%= listOfReceipt.get(1).getName() %>"> Current limit per this type of receipt:
             <input type="number" name="secondFromListValue" placeholder="<%= limitPerReceiptType.get(receipt1) %>"
-            value="<%= limitPerReceiptType.get(receipt1) %>">
+            value="<%= limitPerReceiptType.get(receipt1) %>" min="0">$
             <br>
             Third <input type="text" name="thirdFromList"
                          value="<%= listOfReceipt.get(2).getName() %>"> Current limit per this type of receipt:
             <input type="number" name="thirdFromListValue" placeholder="<%= limitPerReceiptType.get(receipt2) %>"
-            value="<%= limitPerReceiptType.get(receipt2) %>">
+            value="<%= limitPerReceiptType.get(receipt2) %>" min="0">$
             <br>
             Fourth <input type="text" name="fourthFromList"
                           value="<%= listOfReceipt.get(3).getName() %>"> Current limit per this type of receipt:
             <input type="number" name="fourthFromListValue" placeholder="<%= limitPerReceiptType.get(receipt3) %>"
-            value="<%= limitPerReceiptType.get(receipt3) %>">
+            value="<%= limitPerReceiptType.get(receipt3) %>" min="0">$
             <br>
             Fifth <input type="text" name="fifthFromList"
                          value="<%= listOfReceipt.get(4).getName() %>"> Current limit per this type of receipt:
             <input type="number" name="fifthFromListValue" placeholder="<%= limitPerReceiptType.get(receipt4) %>"
-            value="<%= limitPerReceiptType.get(receipt4) %>">
+            value="<%= limitPerReceiptType.get(receipt4) %>" min="0">$
         </div>
 
         <input type="submit" value="Submit"/>

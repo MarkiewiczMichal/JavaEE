@@ -10,10 +10,14 @@ public class AdminReimbursementPanel {
     private static double carMileageRate = 0.3;
     private static double dailyAllowanceRate = 15;
     private static int carMileageLimit = 1500;
+    private static double totalReimbursementLimit=2000;
     private static Map<Receipt, Double> limitPerReceiptType;
 
     public static void setListOfReceipt(List<Receipt> listOfReceipt) {
         AdminReimbursementPanel.listOfReceipt = listOfReceipt;
+    }
+    public static void setTotalReimbursementLimit(double totalReimbursementLimit) {
+        AdminReimbursementPanel.totalReimbursementLimit = totalReimbursementLimit;
     }
 
     public static void setCarMileageRate(double carMileageRate) {
@@ -50,5 +54,8 @@ public class AdminReimbursementPanel {
 
     public static Map<Receipt, Double> getLimitPerReceiptType() {
         return limitPerReceiptType;
+    }
+    public static double getTotalReimbursementLimit() {
+        return totalReimbursementLimit;
     }
 }
