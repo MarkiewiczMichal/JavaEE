@@ -21,7 +21,7 @@ public class SummaryServlet extends HttpServlet {
         ReturnCounter returnCounter = new ReturnCounter();
         returnCounter.setCarMileageReturnAmount(reimbursement);
         returnCounter.setDailyAllowanceReturnAmount(reimbursement);
-        returnCounter.setTotalAmountReimbursement(reimbursement);
+        returnCounter.setTotalReimbursementReturnAmount(reimbursement);
 
         request.setAttribute("nameReimbursement", reimbursement.getName());
         request.setAttribute("numberDaysOfDailyAllowance", reimbursement.getNumberDaysOfDailyAllowance());
@@ -29,7 +29,7 @@ public class SummaryServlet extends HttpServlet {
         request.setAttribute("carMileageReturnAmount",returnCounter.getCarMileageReturnAmount());
         request.setAttribute("dailyAllowanceReturnAmount",returnCounter.getDailyAllowanceReturnAmount());
         request.setAttribute("listOfReceipt",reimbursement.getListOfReceipt());
-        request.setAttribute("totalAmountReimbursement", returnCounter.getTotalAmountReimbursement());
+        request.setAttribute("totalAmountReimbursement", returnCounter.getTotalReimbursementReturnAmount());
         RequestDispatcher rd = request.getRequestDispatcher("/summary.jsp");
         rd.forward(request, response);
     }

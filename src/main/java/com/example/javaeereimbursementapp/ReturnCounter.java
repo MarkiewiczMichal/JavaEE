@@ -3,22 +3,40 @@ package com.example.javaeereimbursementapp;
 public class ReturnCounter {
     private double carMileageReturnAmount;
     private double dailyAllowanceReturnAmount;
+    private double returnAmountAllReceipts;
+    private double totalReimbursementReturnAmount;
 
-    private double totalAmountReimbursement;
 
-    public void setTotalAmountReimbursement(Reimbursement reimbursement) {
-        double tempTotalAmount = 0;
-        double tempPerReceiptTypeAmount = 0;
+    public void setReturnAmountAllReceipts(Reimbursement reimbursement) {
+        double tempTotalReturnAmount = 0;
+        double tempPerReceiptTypeAmount;
         for (Receipt receipt : reimbursement.getListOfReceipt()) {
 
-            if (receipt.getAmount() > AdminReimbursementPanel.getLimitPerReceiptType().get(receipt)) {
-                tempPerReceiptTypeAmount = AdminReimbursementPanel.getLimitPerReceiptType().get(receipt);
+            if (receipt.getAmount() > AdminReimbursementPanel.getLimitPerReceiptType().get(receipt.getName())) {
+                tempPerReceiptTypeAmount = AdminReimbursementPanel.getLimitPerReceiptType().get(receipt.getName());
             } else {
                 tempPerReceiptTypeAmount = receipt.getAmount();
             }
-            tempTotalAmount += tempPerReceiptTypeAmount;
+            tempTotalReturnAmount += tempPerReceiptTypeAmount;
         }
-        this.totalAmountReimbursement = tempTotalAmount;
+        this.returnAmountAllReceipts = tempTotalReturnAmount;
+    }
+
+    public void setTotalReimbursementReturnAmount(Reimbursement reimbursement) {
+        double tempTotalAmount = 0;
+
+        setCarMileageReturnAmount(reimbursement);
+        setDailyAllowanceReturnAmount(reimbursement);
+        setReturnAmountAllReceipts(reimbursement);
+
+        tempTotalAmount += getReturnAmountAllReceipts();
+        tempTotalAmount += getCarMileageReturnAmount();
+        tempTotalAmount += getDailyAllowanceReturnAmount();
+
+        if (tempTotalAmount > AdminReimbursementPanel.getTotalReimbursementLimit()) {
+            tempTotalAmount = AdminReimbursementPanel.getTotalReimbursementLimit();
+        }
+        this.totalReimbursementReturnAmount = tempTotalAmount;
     }
 
     public void setCarMileageReturnAmount(Reimbursement reimbursement) {
@@ -40,7 +58,11 @@ public class ReturnCounter {
         return dailyAllowanceReturnAmount;
     }
 
-    public double getTotalAmountReimbursement() {
-        return totalAmountReimbursement;
+    public double getTotalReimbursementReturnAmount() {
+        return totalReimbursementReturnAmount;
+    }
+
+    public double getReturnAmountAllReceipts() {
+        return returnAmountAllReceipts;
     }
 }

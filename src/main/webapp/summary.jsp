@@ -5,12 +5,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Summary</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 
-<div>
+<div class="clear" style="margin: auto; width: 900px;">
     <h1>Summary your reimbursement claim</h1>
     <br>
     Id of your reimbursement:
@@ -19,19 +19,23 @@
     Number of days for which the refund is due:
     <%= request.getAttribute("numberDaysOfDailyAllowance") %> day/days
     <br>
+    Daily allowance return amount:
+    <%= request.getAttribute("dailyAllowanceReturnAmount")%> $
+    <br>
     Car mileage:
     <%= request.getAttribute("carMileage")%> km
     <br>
     Car mileage return amount:
     <%= request.getAttribute("carMileageReturnAmount")%> $
     <br>
-    Daily allowance return amount:
-    <%= request.getAttribute("dailyAllowanceReturnAmount")%> $
-    <br>
     List of receipts on this reimbursement:
     <%= request.getAttribute("listOfReceipt")%>
     <br>
-    Amount per receipt:
+    -------------------------------------------------------------------
+    <br>
+    Total amount for this reimbursement:
+    <%= request.getAttribute("totalAmountReimbursement")%>
+    <br>
     <% List<Receipt> receiptList = (List<Receipt>) request.getAttribute("listOfReceipt");
         PrintWriter xyz = response.getWriter();
 
@@ -41,9 +45,7 @@
     %>
 
 
-
 </div>
 
-___
 </body>
 </html>

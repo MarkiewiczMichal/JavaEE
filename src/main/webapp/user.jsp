@@ -4,25 +4,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>User panel</title>
 
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<div class="clear">
+<div class="clear" style="margin: auto; width: 900px;">
+    <h1><%= "User panel" %>
+    </h1>
     <form action="user" method="POST" name="form">
-        <label>Reimbursement name:
-            <input type="text" name="name"/>
+        <label>Create new reimbursement claim:
         </label>
         <br>
         <label>
-            <input type="checkbox" name="receipts" id="boxOfSelect" onclick="functionChangeVisibleSelect()"> have you
+            <input type="checkbox" id="box" name="carMileageBox" onclick="functionChangeVisibleCarMileage()">
+            Have you car mileage to refund
+        </label>
+
+        <label id="label" style="visibility: hidden">
+            <input type="number" name="carMileage" placeholder="number of km to refund"/> km
+        </label>
+
+        <br>
+        <label>
+            <input type="checkbox" id="box2" name="dailyallowance" onclick="functionChangeVisibleDailyAllowance()">
+            Set periods for which you get daily allowance
+        </label>
+
+
+        <label id="label2" style="visibility: hidden">
+            <b><i>start: </i></b> <input type="date" name="dailyAllowanceStart" min="2021-01-01" max="2023-12-31"/>
+            <b><i>end: </i></b> <input type="date" name="dailyAllowanceEnd" min="2021-01-01" max="2023-12-31"/>
+        </label>
+
+        <br>
+        <label>
+            <input type="checkbox" name="receipts" id="boxOfSelect" onclick="functionChangeVisibleSelect()"> Have you
             receipts to refund
         </label>
 
         <% List<Receipt> listOfReceipt = (List<Receipt>) request.getAttribute("listOfReceipt");%>
         <br>
-        <label class="select1" style="visibility: hidden">Wybierz z listy:</label>
+        <label class="select1" style="visibility: hidden">Select from list:</label>
         <select name="select" class="select1" style="visibility: hidden">
             <option selected value>
                 -- select an option --
@@ -39,16 +62,15 @@
             </option>
         </select>
         <input type="number" class="select1" name="select1Amount" placeholder="Enter the value of the bill"
-               style="visibility: hidden">
+               min="0" step="0.01" style="visibility: hidden">
         <label class="select1" style="visibility: hidden; font-style: italic;">
             <input type="checkbox" class="select1" id="secondBox"
                    onclick="functionChangeVisibleSelectSecond()" style="visibility: hidden">
             Add more
         </label>
 
-
         <br>
-        <label class="select2" style="visibility: hidden">Wybierz z listy:</label>
+        <label class="select2" style="visibility: hidden">Select from list:</label>
         <select name="select2" class="select2" style="visibility: hidden">
             <option selected value>
                 -- select an option --
@@ -65,7 +87,7 @@
             </option>
         </select>
         <input type="number" class="select2" name="select2Amount" placeholder="Enter the value of the bill"
-               style="visibility: hidden">
+               min="0" step="0.01" style="visibility: hidden">
         <label class="select2" style="visibility: hidden; font-style: italic;">
             <input type="checkbox" class="select2" id="thirdBox"
                    onclick="functionChangeVisibleSelectThird()" style="visibility: hidden">
@@ -74,7 +96,7 @@
 
 
         <br>
-        <label class="select3" style="visibility: hidden">Wybierz z listy:</label>
+        <label class="select3" style="visibility: hidden">Select from list:</label>
         <select name="select3" class="select3" style="visibility: hidden">
             <option selected value>
                 -- select an option --
@@ -91,7 +113,7 @@
             </option>
         </select>
         <input type="number" class="select3" name="select3Amount" placeholder="Enter the value of the bill"
-               style="visibility: hidden">
+               min="0" step="0.01" style="visibility: hidden">
         <label class="select3" style="visibility: hidden; font-style: italic;">
             <input type="checkbox" class="select3" id="fourthBox"
                    onclick="functionChangeVisibleSelectFourth()" style="visibility: hidden">
@@ -99,7 +121,7 @@
         </label>
 
         <br>
-        <label class="select4" style="visibility: hidden">Wybierz z listy:</label>
+        <label class="select4" style="visibility: hidden">Select from list:</label>
         <select name="select4" class="select4" style="visibility: hidden">
             <option selected value>
                 -- select an option --
@@ -116,7 +138,7 @@
             </option>
         </select>
         <input type="number" class="select4" name="select4Amount" placeholder="Enter the value of the bill"
-               style="visibility: hidden">
+               min="0" step="0.01" style="visibility: hidden">
         <label class="select4" style="visibility: hidden; font-style: italic;">
             <input type="checkbox" class="select4" id="fifthBox"
                    onclick="functionChangeVisibleSelectFifth()" style="visibility: hidden">
@@ -124,7 +146,7 @@
         </label>
 
         <br>
-        <label class="select5" style="visibility: hidden">Wybierz z listy:</label>
+        <label class="select5" style="visibility: hidden">Select from list:</label>
         <select name="select5" class="select5" style="visibility: hidden">
             <option selected value>
                 -- select an option --
@@ -141,38 +163,11 @@
             </option>
         </select>
         <input type="number" class="select5" name="select5Amount" placeholder="Enter the value of the bill"
-               style="visibility: hidden">
-
+               min="0" step="0.01" style="visibility: hidden">
         <br>
-        <label>
-            <input type="checkbox" id="box" name="carMileageBox" onclick="functionChangeVisibleCarMileage()">
-            have you car mileage to refund
-        </label>
-
-        <label id="label" style="visibility: hidden">
-            <input type="number" name="carMileage" placeholder="number of km to refund"/> km
-        </label>
-
-        <br>
-        <label>
-            <input type="checkbox" id="box2" name="dailyallowance" onclick="functionChangeVisibleDailyAllowance()"> test
-        </label>
-        <br>
-
-        <label id="label2" style="visibility: hidden">
-            <input type="date" name="dailyAllowanceStart" min="2021-01-01" max="2023-12-31"/>
-            <input type="date" name="dailyAllowanceEnd" min="2021-01-01" max="2023-12-31"/>
-        </label>
-
-        <br>
-
-
         <input type="submit" value="Send"/>
     </form>
 </div>
-
-Work in progress
-
 
 <script>
 
