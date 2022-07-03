@@ -1,6 +1,5 @@
 package com.example.javaeereimbursementapp;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class AdminReimbursementPanel {
     private static double dailyAllowanceRate = 15;
     private static int carMileageLimit = 1500;
     private static double totalReimbursementLimit=2000;
-    private static Map<Receipt, Double> limitPerReceiptType;
+    private static Map<String, Double> limitPerReceiptType;
 
     public static void setListOfReceipt(List<Receipt> listOfReceipt) {
         AdminReimbursementPanel.listOfReceipt = listOfReceipt;
@@ -32,7 +31,7 @@ public class AdminReimbursementPanel {
         AdminReimbursementPanel.carMileageLimit = carMileageLimit;
     }
 
-    public static void setLimitPerReceiptType(Map<Receipt, Double> limitPerReceiptType) {
+    public static void setLimitPerReceiptType(Map<String, Double> limitPerReceiptType) {
         AdminReimbursementPanel.limitPerReceiptType = limitPerReceiptType;
     }
 
@@ -52,7 +51,7 @@ public class AdminReimbursementPanel {
         return carMileageLimit;
     }
 
-    public static Map<Receipt, Double> getLimitPerReceiptType() {
+    public static Map<String, Double> getLimitPerReceiptType() {
         return limitPerReceiptType;
     }
     public static double getTotalReimbursementLimit() {

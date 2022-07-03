@@ -2,14 +2,12 @@ package com.example.javaeereimbursementapp;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Reimbursement {
     private final String name;
-    private static int id = 0;
+    private static int id = 1;
 
     private List<Receipt> listOfReceipt = new ArrayList<>();
     private int numberDaysOfDailyAllowance;
@@ -29,8 +27,12 @@ public class Reimbursement {
     }
 
     public void setNumberDaysOfDailyAllowance(LocalDate start, LocalDate end) {
-        Duration diference = Duration.between(start.atStartOfDay(), end.atStartOfDay());
-        numberDaysOfDailyAllowance = (int) (diference.toDays());
+        if (end.isBefore(start)) {
+            numberDaysOfDailyAllowance = 0;
+        } else {
+            Duration difference = Duration.between(start.atStartOfDay(), end.atStartOfDay());
+            numberDaysOfDailyAllowance = (int) (difference.toDays());
+        }
     }
 
     public int getNumberDaysOfDailyAllowance() {
