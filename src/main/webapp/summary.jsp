@@ -7,10 +7,11 @@
 <head>
     <title>Summary</title>
 </head>
-<body>
+<body style="background: rgb(56,239,125);
+background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 100%);">
 <jsp:include page="header.jsp"/>
 
-<div class="clear" style="margin: auto; width: 900px;">
+<div class="clear" style="margin: auto; width: 900px; border: 2px solid red">
     <h1>Summary your reimbursement claim</h1>
     <br>
     Id of your reimbursement:

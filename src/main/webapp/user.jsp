@@ -5,13 +5,40 @@
 <html>
 <head>
     <title>User panel</title>
+    <style>
 
+        input[type=number], [type=text], [type=date] {
+            width: 25%;
+            padding: 5px 5px;
+            margin: 8px 0;
+            border-radius: 10px;
+            background-color: lightgoldenrodyellow;
+        }
+
+        select{
+            width: 15%;
+            padding: 5px 5px;
+            margin: 8px 0;
+            border-radius: 10px;
+            background-color: lightgoldenrodyellow;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            height: 5%;
+            padding: 5px 5px;
+            margin: 8px 0;
+            border-radius: 10px;
+            background-color: lightgoldenrodyellow;
+        }
+
+    </style>
 </head>
-<body>
+<body style="background: rgb(56,239,125);
+background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 100%);">
 <jsp:include page="header.jsp"/>
 <div class="clear" style="margin: auto; width: 900px;">
-    <h1><%= "User panel" %>
-    </h1>
+    <h1>User panel </h1>
     <form action="user" method="POST" name="form">
         <label>Create new reimbursement claim:
         </label>
@@ -170,7 +197,6 @@
 </div>
 
 <script>
-
     function functionChangeVisibleCarMileage() {
         const checkbox = document.getElementById("box");
         const label = document.getElementById("label");
@@ -200,7 +226,6 @@
             }
         });
     }
-
 
     function functionChangeVisibleSelect() {
         const checkbox = document.getElementById("boxOfSelect");

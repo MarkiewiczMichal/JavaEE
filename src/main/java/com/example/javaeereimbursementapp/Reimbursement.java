@@ -44,7 +44,10 @@ public class Reimbursement {
     }
 
     public void setCarMileage(int carMileage) {
-        this.carMileage = carMileage;
+        if (carMileage < 0) this.carMileage = 0;
+        else {
+            this.carMileage = carMileage;
+        }
     }
 
     public List<Receipt> getListOfReceipt() {

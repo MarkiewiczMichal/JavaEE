@@ -10,9 +10,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
@@ -23,9 +21,6 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setAttribute("listOfReceipt", AdminReimbursementPanel.getListOfReceipt());
-        request.setAttribute("firstFromList", AdminReimbursementPanel.getListOfReceipt().get(0));
-        request.setAttribute("secondFromList", AdminReimbursementPanel.getListOfReceipt().get(1));
-        request.setAttribute("thirdFromList", AdminReimbursementPanel.getListOfReceipt().get(2));
         RequestDispatcher rd = request.getRequestDispatcher("/user.jsp");
         rd.forward(request, response);
     }
@@ -34,7 +29,6 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
-        String nameReimbursement = request.getParameter("name");
         String stringCarMileage = request.getParameter("carMileage");
         String dailyAllowanceStart = request.getParameter("dailyAllowanceStart");
         String dailyAllowanceEnd = request.getParameter("dailyAllowanceEnd");
