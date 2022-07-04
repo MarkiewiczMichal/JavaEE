@@ -31,3 +31,6 @@ Reimbursement app is easy to use.
 4.  Define reimbursement limit per receipt type
 5.  Define total reimbursement limit
 6.  Define limit of number kilometer per reimbursement
+
+![image](https://user-images.githubusercontent.com/44433800/177217393-aa15c962-040b-4a67-95f9-edc88bafbc2b.png)
+
