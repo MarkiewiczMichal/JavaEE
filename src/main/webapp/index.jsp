@@ -10,7 +10,8 @@
 <head>
     <title>Index</title>
 </head>
-<body>
+<body style="background: rgb(56,239,125);
+background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 100%);">
 <% Receipt receiptTaxi = new Receipt("taxi");
     Receipt receiptRestaurant = new Receipt("restaurant");
     Receipt receiptHotel = new Receipt("hotel");

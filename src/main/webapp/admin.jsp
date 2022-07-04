@@ -14,15 +14,22 @@
             border-radius: 10px;
             background-color: lightgoldenrodyellow;
         }
+        input[type=submit] {
+            width: 100%;
+            height: 5%;
+            padding: 5px 5px;
+            margin: 8px 0;
+            border-radius: 10px;
+            background-color: lightgoldenrodyellow;
+        }
 
     </style>
 </head>
-<body style="background: rgb(238,232,174);
-background: radial-gradient(circle, rgba(238,232,174,1) 0%, rgba(233,148,148,1) 100%);">
+<body style="background: rgb(56,239,125);
+background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 100%);">
 <jsp:include page="header.jsp"/>
 <div class="clear" style="margin: auto; width: 900px;">
-    <h1><%= "Administration panel" %>
-    </h1>
+    <h1>Administration panel</h1>
     <div style="border: 2px solid red; padding: 5px 5px;">
         Current daily allowance rate:
         <b><%= request.getAttribute("dailyAllowanceRate")%>
