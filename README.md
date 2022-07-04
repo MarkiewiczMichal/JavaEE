@@ -32,5 +32,7 @@ Reimbursement app is easy to use.
 5.  Define total reimbursement limit
 6.  Define limit of number kilometer per reimbursement
 
-![image](https://user-images.githubusercontent.com/44433800/177217393-aa15c962-040b-4a67-95f9-edc88bafbc2b.png)
+![image](https://user-images.githubusercontent.com/44433800/177217393-aa15c962-040b-4a67-95f9-edc88bafbc2b.png)\
+![image](https://user-images.githubusercontent.com/44433800/177217498-f3c46e5d-9b95-4909-aa0d-87c8f42b22d8.png)
+
 
