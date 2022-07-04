@@ -40,17 +40,20 @@ background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 10
     <div>
         <% List<Receipt> receiptList = (List<Receipt>) request.getAttribute("listOfReceipt");
             PrintWriter xyz = response.getWriter();
-            xyz.println("Your List of receipts :");
-            xyz.println("<br>");
-            for (Receipt recipt : receiptList) {
-                xyz.println(recipt.getName() + ": ");
-                xyz.println(recipt.getAmount() + " $");
+            if (receiptList.size() != 0) {
+                xyz.println("Your List of receipts :");
                 xyz.println("<br>");
             }
-            xyz.println("Remember about return limits for each type of receipt");
+            for (Receipt receipt : receiptList) {
+                xyz.println(receipt.getName() + ": ");
+                xyz.println(receipt.getAmount() + " $");
+                xyz.println("<br>");
+            }
+            if (receiptList.size() != 0) {
+                xyz.println("Remember about return limits for each type of receipt");
+            }
         %>
     </div>
-
 
 
 </div>
