@@ -43,6 +43,10 @@ background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 10
         <b><%= request.getAttribute("carMileageLimit") %>
         </b> km
         <br>
+        Current total reimbursement limit:
+        <b><%= request.getAttribute("totalReimbursementLimit")%>
+        </b> $
+        <br>
         Current possible type of receipt:
         <b><%= request.getAttribute("listOfReceipt") %>
         </b>
@@ -70,7 +74,7 @@ background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 10
             <br>
             Type new total reimbursement limit:
             <input type="number" name="totalReimbursementLimit" setp="1" min="0"
-                   placeholder="Current limit:<% request.getAttribute("totalReimbursementLimit");%>">$
+                   placeholder="Curr. limit: <%= request.getAttribute("totalReimbursementLimit")%>">$
             <br>
             <br>
             Set new possible receipt type:

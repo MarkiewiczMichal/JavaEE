@@ -45,7 +45,7 @@ background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 10
     <h3>*** As a user you can: ***</h3>
     <ol>
         <li> Create new reimbursement claim</li>
-        <li> Add 5 receipts tp claim refund</li>
+        <li> Add 5 receipts to claim refund</li>
         <li> Add days or periods for which you get daily allowance</li>
         <li> Add personal car mileage</li>
     </ol>

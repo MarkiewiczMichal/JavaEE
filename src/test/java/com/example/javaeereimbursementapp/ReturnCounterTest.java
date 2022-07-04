@@ -39,15 +39,54 @@ class ReturnCounterTest {
     @Test
     void setReturnAmountAllReceipts() {
         //given
+        Reimbursement reimbursement = new Reimbursement();
+        ReturnCounter returnCounter = new ReturnCounter();
+        initListofReceipt();
+        Receipt receiptRestaurant = new Receipt("restaurant");
         //when
+        reimbursement.addReceipt(receiptRestaurant);
+        returnCounter.setReturnAmountAllReceipts(reimbursement);
+
         //then
+        // no amount set in receipt
+        assertEquals(0, returnCounter.getReturnAmountAllReceipts());
+
+        //and then
+        // amount is bigger then limit
+        receiptRestaurant.setAmount(200);
+        returnCounter.setReturnAmountAllReceipts(reimbursement);
+        assertEquals(150, returnCounter.getReturnAmountAllReceipts());
+
+        //and then
+        receiptRestaurant.setAmount(-1);
+        returnCounter.setReturnAmountAllReceipts(reimbursement);
+        assertEquals(0, returnCounter.getReturnAmountAllReceipts());
+
     }
 
     @Test
     void setTotalReimbursementReturnAmount() {
         //given
+        Reimbursement reimbursement = new Reimbursement();
+        ReturnCounter returnCounter = new ReturnCounter();
+        initListofReceipt();
+        Receipt receiptRestaurant = new Receipt("restaurant");
+        reimbursement.addReceipt(receiptRestaurant);
+        receiptRestaurant.setAmount(200);
+        reimbursement.setCarMileage(1200);
+        reimbursement.setNumberDaysOfDailyAllowance(LocalDate.of(2022, 1, 12),
+                LocalDate.of(2022, 1, 13));
         //when
+        returnCounter.setTotalReimbursementReturnAmount(reimbursement);
         //then
+        assertEquals(525,returnCounter.getTotalReimbursementReturnAmount());
+
+        //and then
+        // amount is bigger then limit
+        reimbursement.setNumberDaysOfDailyAllowance(LocalDate.of(2021, 1, 12),
+                LocalDate.of(2022, 1, 13));
+        returnCounter.setTotalReimbursementReturnAmount(reimbursement);
+        assertEquals(2000,returnCounter.getTotalReimbursementReturnAmount());
     }
 
     @Test
@@ -59,8 +98,7 @@ class ReturnCounterTest {
         reimbursement.setCarMileage(1200);
         returnCounter.setCarMileageReturnAmount(reimbursement);
         //then
-        assertEquals(1200 * AdminReimbursementPanel.getCarMileageRate(),
-                returnCounter.getCarMileageReturnAmount());
+        assertEquals(1200*0.3, returnCounter.getCarMileageReturnAmount());
         //and then
         /*
         Actual car mileage limit is set to 1500 km so every kilometer over this limit
@@ -68,8 +106,7 @@ class ReturnCounterTest {
          */
         reimbursement.setCarMileage(2500);
         returnCounter.setCarMileageReturnAmount(reimbursement);
-        assertEquals(1500 * AdminReimbursementPanel.getCarMileageRate(),
-                returnCounter.getCarMileageReturnAmount());
+        assertEquals(1500 * 0.3, returnCounter.getCarMileageReturnAmount());
 
         //and then
         reimbursement.setCarMileage(0);
@@ -108,13 +145,5 @@ class ReturnCounterTest {
                 LocalDate.of(2022, 1, 17));
         returnCounter.setDailyAllowanceReturnAmount(reimbursement);
         assertEquals(75, returnCounter.getDailyAllowanceReturnAmount());
-    }
-
-    @Test
-    void getTotalReimbursementReturnAmount() {
-    }
-
-    @Test
-    void getReturnAmountAllReceipts() {
     }
 }

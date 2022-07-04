@@ -42,6 +42,7 @@
             background-color: darkslategrey;
             font-size: large;
             border-radius: 25px;
+            margin-top: 8px;
         }
 
         input.formClass:hover {
