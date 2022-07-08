@@ -6,6 +6,11 @@ Tomcat version: 10.0.22
 Demo:\
 http://javaee.washboard.pl/ 
 
+\
+How to run app: 
+1.  Import project
+2.  Set up Tomcat 
+https://www.youtube.com/watch?v=ThBw3WBTw9Q&t=261s
 
 
 
