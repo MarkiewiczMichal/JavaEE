@@ -18,21 +18,23 @@ background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 10
     Receipt receiptAuto = new Receipt("auto");
     Receipt receiptTrain = new Receipt("train");
     List<Receipt> receiptList = new ArrayList<>();
-    receiptList.add(receiptTaxi);
-    receiptList.add(receiptHotel);
-    receiptList.add(receiptRestaurant);
-    receiptList.add(receiptAuto);
-    receiptList.add(receiptTrain);
+    if (AdminReimbursementPanel.getListOfReceipt().size()==0) {
+        receiptList.add(receiptTaxi);
+        receiptList.add(receiptHotel);
+        receiptList.add(receiptRestaurant);
+        receiptList.add(receiptAuto);
+        receiptList.add(receiptTrain);
 
-    Map<String, Double> limitPerReceiptType = new HashMap<>();
-    limitPerReceiptType.put(receiptTaxi.getName(), 150.0);
-    limitPerReceiptType.put(receiptHotel.getName(), 150.0);
-    limitPerReceiptType.put(receiptRestaurant.getName(), 150.0);
-    limitPerReceiptType.put(receiptAuto.getName(), 150.0);
-    limitPerReceiptType.put(receiptTrain.getName(), 150.0);
+        Map<String, Double> limitPerReceiptType = new HashMap<>();
+        limitPerReceiptType.put(receiptTaxi.getName(), 150.0);
+        limitPerReceiptType.put(receiptHotel.getName(), 150.0);
+        limitPerReceiptType.put(receiptRestaurant.getName(), 150.0);
+        limitPerReceiptType.put(receiptAuto.getName(), 150.0);
+        limitPerReceiptType.put(receiptTrain.getName(), 150.0);
 
-    AdminReimbursementPanel.setListOfReceipt(receiptList);
-    AdminReimbursementPanel.setLimitPerReceiptType(limitPerReceiptType);
+        AdminReimbursementPanel.setListOfReceipt(receiptList);
+        AdminReimbursementPanel.setLimitPerReceiptType(limitPerReceiptType);
+    }
 %>
 
 <jsp:include page="header.jsp"/>
