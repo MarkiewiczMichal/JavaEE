@@ -18,7 +18,7 @@ background: radial-gradient(circle, rgba(56,239,125,1) 0%, rgba(17,153,142,1) 10
     Receipt receiptAuto = new Receipt("auto");
     Receipt receiptTrain = new Receipt("train");
     List<Receipt> receiptList = new ArrayList<>();
-    if (AdminReimbursementPanel.getListOfReceipt().size()==0) {
+    if (AdminReimbursementPanel.getListOfReceipt()==null) {
         receiptList.add(receiptTaxi);
         receiptList.add(receiptHotel);
         receiptList.add(receiptRestaurant);
